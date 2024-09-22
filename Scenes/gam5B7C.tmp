@@ -1,0 +1,237 @@
+[gd_scene load_steps=6 format=3 uid="uid://24el7sb7wipb"]
+
+[ext_resource type="Script" path="res://Scripts/key_pad.gd" id="1_dy33o"]
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="1_n4qym"]
+[ext_resource type="Script" path="res://Scripts/time.gd" id="2_k2ejv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jp50"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[sub_resource type="FontFile" id="FontFile_wqel7"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+
+[node name="Game" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 648.0
+offset_bottom = 1152.0
+script = ExtResource("1_n4qym")
+
+[node name="BG" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_right = 648.0
+offset_bottom = 1152.0
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="Head" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 89.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Head"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Score" type="Label" parent="UI/Head/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 35
+text = "Score:"
+
+[node name="Time" type="Label" parent="UI/Head/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 35
+text = "Time:"
+script = ExtResource("2_k2ejv")
+
+[node name="60SecsTimer" type="Timer" parent="UI/Head/MarginContainer/Time"]
+wait_time = 61.0
+one_shot = true
+autostart = true
+
+[node name="Body" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -264.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jp50")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Body"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Question" type="Label" parent="UI/Body/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 55
+
+[node name="Answer" type="Label" parent="UI/Body/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 55
+text = "99999"
+
+[node name="KeyPad" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -537.0
+offset_right = 648.0
+grow_vertical = 0
+script = ExtResource("1_dy33o")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/KeyPad"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="UI/KeyPad/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="seven" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "7"
+
+[node name="eight" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "8"
+
+[node name="nine" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "9"
+
+[node name="four" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "4"
+
+[node name="five" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "5"
+
+[node name="six" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "6"
+
+[node name="one" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "1"
+
+[node name="two" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "2"
+
+[node name="three" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "3"
+
+[node name="Cross" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "❌"
+
+[node name="zero" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Tick" type="Button" parent="UI/KeyPad/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontFile_wqel7")
+theme_override_font_sizes/font_size = 50
+text = "✔"
+
+[connection signal="timeout" from="UI/Head/MarginContainer/Time/60SecsTimer" to="UI" method="_on_secs_timer_timeout"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/seven" to="UI/KeyPad" method="_on_seven_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/eight" to="UI/KeyPad" method="_on_eight_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/nine" to="UI/KeyPad" method="_on_nine_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/four" to="UI/KeyPad" method="_on_four_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/five" to="UI/KeyPad" method="_on_five_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/six" to="UI/KeyPad" method="_on_six_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/one" to="UI/KeyPad" method="_on_one_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/two" to="UI/KeyPad" method="_on_two_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/three" to="UI/KeyPad" method="_on_three_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/Cross" to="UI/KeyPad" method="_on_cross_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/zero" to="UI/KeyPad" method="_on_zero_pressed"]
+[connection signal="pressed" from="UI/KeyPad/MarginContainer/GridContainer/Tick" to="UI/KeyPad" method="_on_tick_pressed"]
